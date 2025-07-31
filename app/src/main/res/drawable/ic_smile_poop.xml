@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Тело какашки -->
+    <path
+        android:fillColor="#8B4513"
+        android:strokeColor="#5D2906"
+        android:strokeWidth="4"
+        android:pathData="M100,50 C120,30 160,40 170,70 C180,100 160,130 140,150 C120,170 80,170 60,150 C40,130 30,100 40,70 C50,40 80,30 100,50 Z" />
+
+    <!-- Глаза -->
+    <group>
+        <path
+            android:fillColor="#FFFFFF"
+            android:strokeColor="#5D2906"
+            android:strokeWidth="2"
+            android:pathData="M80,90 a10,10 0 1,0 0.1,0 z" />
+        <path
+            android:fillColor="#000000"
+            android:pathData="M83,90 a5,5 0 1,0 0.1,0 z" />
+    </group>
+
+    <group>
+        <path
+            android:fillColor="#FFFFFF"
+            android:strokeColor="#5D2906"
+            android:strokeWidth="2"
+            android:pathData="M120,90 a10,10 0 1,0 0.1,0 z" />
+        <path
+            android:fillColor="#000000"
+            android:pathData="M123,90 a5,5 0 1,0 0.1,0 z" />
+    </group>
+
+    <!-- Улыбка -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#5D2906"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M90,120 C100,140 120,140 130,120" />
+
+    <!-- Блески в глазах -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M85,87 a2,2 0 1,0 0.1,0 z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M125,87 a2,2 0 1,0 0.1,0 z" />
+</vector>
