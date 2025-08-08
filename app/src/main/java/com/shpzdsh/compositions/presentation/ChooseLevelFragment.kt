@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.shpzdsh.compositions.R
 import com.shpzdsh.compositions.databinding.FragmentChooseLevelBinding
+import com.shpzdsh.compositions.domain.entity.Level
 
 
-class ChooseLevelFragment: Fragment() {
+class ChooseLevelFragment : Fragment() {
 
-    private var _binding: FragmentChooseLevelBinding ?= null
+    private var _binding: FragmentChooseLevelBinding? = null
     private val binding: FragmentChooseLevelBinding
         get() = _binding ?: throw RuntimeException("FragmentChooseLevelBinding == null")
 
@@ -26,22 +27,39 @@ class ChooseLevelFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonLevelTest.setOnClickListener {
-            // TODO
+        with(binding) {
+            buttonLevelTest.setOnClickListener {
+                launchGameFragment(Level.TEST)
+            }
+            buttonLevelEasy.setOnClickListener {
+                launchGameFragment(Level.EASY)
+            }
+            buttonLevelNormal.setOnClickListener {
+                launchGameFragment(Level.NORMAL)
+            }
+            buttonLevelHard.setOnClickListener {
+                launchGameFragment(Level.HARD)
+            }
         }
-        binding.buttonLevelEasy.setOnClickListener {
-            // TODO
-        }
-        binding.buttonLevelNormal.setOnClickListener {
-            //TODO
-        }
-        binding.buttonLevelHard.setOnClickListener {
-            // TODO
-        }
+    }
+
+    private fun launchGameFragment(level: Level) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, GameFragment.newInstance(level))
+            .addToBackStack(GameFragment.NAME)
+            .commit()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val NAME = "ChooseLevelFragment"
+
+        fun newInstance(): ChooseLevelFragment {
+            return ChooseLevelFragment()
+        }
     }
 }
