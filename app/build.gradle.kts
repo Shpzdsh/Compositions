@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.safeargs)
-
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -39,7 +39,7 @@ android {
     }
     buildFeatures {
         compose = true
-        viewBinding = true
+        dataBinding = true
     }
 }
 
