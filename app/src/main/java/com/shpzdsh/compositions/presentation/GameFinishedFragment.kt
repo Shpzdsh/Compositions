@@ -35,7 +35,7 @@ class GameFinishedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupClickListeners()
-        bindViews()
+        binding.gameResult = args.gameResult
     }
 
     private fun setupClickListeners() {
@@ -44,46 +44,10 @@ class GameFinishedFragment : Fragment() {
         }
     }
 
-    private fun bindViews() {
-        binding.gameResult = args.gameResult
-        with(binding) {
-            emojiResult.setImageResource(getSmileResId())
-//            tvRequiredAnswers.text = String.format(
-//                getString(R.string.required_score),
-//                args.gameResult.gameSettings.minCountOfRightAnswers
-//            )
-//            tvScopeAnswers.text = String.format(
-//                getString(R.string.score_answers),
-//                args.gameResult.countOfRightAnswer
-//            )
-//            tvRequiredPercentage.text = String.format(
-//                getString(R.string.required_percentage),
-//                args.gameResult.gameSettings.minPercentOfRightAnswer
-//            )
-            tvScopePercentage.text = String.format(
-                getString(R.string.score_percentage),
-                getPercentOfRightAnswers()
-            )
-        }
-    }
-
-    private fun getSmileResId(): Int {
-        return if (args.gameResult.winner) {
-            R.drawable.ic_smile_poop
-        } else {
-            R.drawable.ic_sad_poop
-        }
-    }
-
-    private fun getPercentOfRightAnswers() = with(args.gameResult) {
-        if (countOfRightAnswer == 0) 0 else ((countOfRightAnswer / countOfQuestions.toDouble()) * 100).toInt()
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
     private fun retryGame() {
         findNavController().popBackStack()
